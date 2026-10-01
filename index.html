@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Treasurery</title>
+
+<style>
+
+:root{
+
+    --blue:#2563eb;
+    --blue-dark:#1e40af;
+    --blue-soft:#eff6ff;
+
+    --green:#16a34a;
+    --green-soft:#ecfdf5;
+
+    --red:#dc2626;
+
+    --text:#172033;
+    --muted:#667085;
+
+    --border:#dfe5ee;
+
+    --background:#f5f8fc;
+    --card:#ffffff;
+
+    --shadow:
+        0 18px 45px
+        rgba(31,41,55,.10);
+
+}
+
+
+*{
+    box-sizing:border-box;
+}
+
+
+body{
+
+    margin:0;
+
+    min-height:100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color:
+        var(--text);
+
+    background:
+
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(37,99,235,.12),
+            transparent 28rem
+        ),
+
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(22,163,74,.10),
+            transparent 30rem
+        ),
+
+        var(--background);
+
+}
+
+
+button,
+input{
+
+    font:inherit;
+
+}
+
+
+button{
+    cursor:pointer;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page{
+
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+}
+
+
+/* =========================
+   LEFT BRAND SIDE
+========================= */
+
+.brand-side{
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    padding:
+        60px;
+
+    color:white;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #2563eb 0%,
+            #2446a8 55%,
+            #16a34a 130%
+        );
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+.brand-side::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+
+    height:350px;
+
+    border-radius:50%;
+
+    right:-120px;
+
+    top:-100px;
+
+    background:
+        rgba(255,255,255,.08);
+
+}
+
+
+.brand-side::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:280px;
+
+    height:280px;
+
+    border-radius:50%;
+
+    left:-120px;
+
+    bottom:-120px;
+
+    background:
+        rgba(255,255,255,.06);
+
+}
+
+
+.logo{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+.logo-mark{
+
+    width:55px;
+
+    height:55px;
+
+    display:grid;
+
+    place-items:center;
+
+    margin-bottom:
+        20px;
+
+    border-radius:
+        16px;
+
+    background:
+        white;
+
+    color:
+        var(--blue);
+
+    font-size:
+        25px;
+
+    font-weight:
+        900;
+
+}
+
+
+.logo h1{
+
+    margin:0;
+
+    font-size:
+        clamp(
+            40px,
+            6vw,
+            66px
+        );
+
+    letter-spacing:
+        -2px;
+
+}
+
+
+.logo p{
+
+    max-width:
+        500px;
+
+    margin:
+        16px
+        0
+        0;
+
+    color:
+        rgba(255,255,255,.88);
+
+    font-size:
+        17px;
+
+    line-height:
+        1.65;
+
+}
+
+
+.feature-list{
+
+    position:relative;
+
+    z-index:2;
+
+    display:grid;
+
+    gap:
+        12px;
+
+    margin-top:
+        35px;
+
+}
+
+
+.feature{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:
+        11px;
+
+    color:
+        rgba(255,255,255,.92);
+
+    font-size:
+        13px;
+
+}
+
+
+.feature-icon{
+
+    width:
+        30px;
+
+    height:
+        30px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:
+        9px;
+
+    background:
+        rgba(255,255,255,.13);
+
+}
+
+
+/* =========================
+   ACCOUNT SIDE
+========================= */
+
+.account-side{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:
+        40px;
+
+}
+
+
+.account-card{
+
+    width:
+        min(
+            440px,
+            100%
+        );
+
+    padding:
+        32px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        22px;
+
+    background:
+        var(--card);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.account-card h2{
+
+    margin:
+        0
+        0
+        5px;
+
+    font-size:
+        27px;
+
+}
+
+
+.account-card > p{
+
+    margin:
+        0
+        0
+        24px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =========================
+   TABS
+========================= */
+
+.tabs{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:
+        5px;
+
+    padding:
+        5px;
+
+    margin-bottom:
+        23px;
+
+    border-radius:
+        12px;
+
+    background:
+        #f1f4f8;
+
+}
+
+
+.tab{
+
+    border:0;
+
+    padding:
+        10px;
+
+    border-radius:
+        9px;
+
+    background:
+        transparent;
+
+    color:
+        var(--muted);
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+
+}
+
+
+.tab.active{
+
+    color:
+        var(--blue);
+
+    background:
+        white;
+
+    box-shadow:
+        0 3px 10px
+        rgba(31,41,55,.07);
+
+}
+
+
+/* =========================
+   FORMS
+========================= */
+
+.form{
+
+    display:none;
+
+}
+
+
+.form.active{
+
+    display:block;
+
+}
+
+
+.field{
+
+    margin-bottom:
+        15px;
+
+}
+
+
+.field label{
+
+    display:block;
+
+    margin-bottom:
+        7px;
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+
+}
+
+
+.field input{
+
+    width:
+        100%;
+
+    padding:
+        12px
+        13px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        10px;
+
+    outline:none;
+
+    color:
+        var(--text);
+
+    background:
+        white;
+
+}
+
+
+.field input:focus{
+
+    border-color:
+        var(--blue);
+
+    box-shadow:
+
+        0 0 0 3px
+        rgba(37,99,235,.10);
+
+}
+
+
+.password-row{
+
+    display:flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        15px;
+
+    align-items:center;
+
+}
+
+
+.forgot{
+
+    border:0;
+
+    padding:0;
+
+    color:
+        var(--blue);
+
+    background:
+        transparent;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+}
+
+
+.primary{
+
+    width:
+        100%;
+
+    border:0;
+
+    padding:
+        12px
+        16px;
+
+    margin-top:
+        5px;
+
+    border-radius:
+        10px;
+
+    color:white;
+
+    background:
+        var(--blue);
+
+    font-size:
+        13px;
+
+    font-weight:
+        900;
+
+}
+
+
+.primary:hover{
+
+    background:
+        var(--blue-dark);
+
+}
+
+
+.notice{
+
+    display:none;
+
+    margin-top:
+        15px;
+
+    padding:
+        12px;
+
+    border-radius:
+        10px;
+
+    color:
+        #1e40af;
+
+    background:
+        var(--blue-soft);
+
+    border:
+        1px solid
+        #bfdbfe;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.5;
+
+}
+
+
+.notice.show{
+
+    display:block;
+
+}
+
+
+.error{
+
+    display:none;
+
+    margin-bottom:
+        15px;
+
+    padding:
+        11px;
+
+    border-radius:
+        10px;
+
+    color:
+        #991b1b;
+
+    background:
+        #fef2f2;
+
+    border:
+        1px solid
+        #fecaca;
+
+    font-size:
+        11px;
+
+}
+
+
+.error.show{
+
+    display:block;
+
+}
+
+
+.footer-note{
+
+    margin-top:
+        22px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        10px;
+
+    text-align:center;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    .page{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .brand-side{
+
+        min-height:auto;
+
+        padding:
+            38px
+            24px;
+
+    }
+
+
+    .logo h1{
+
+        font-size:
+            42px;
+
+    }
+
+
+    .feature-list{
+
+        display:none;
+
+    }
+
+
+    .account-side{
+
+        padding:
+            24px
+            18px
+            50px;
+
+    }
+
+
+    .account-card{
+
+        padding:
+            24px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<main class="page">
+
+
+<!-- =========================
+     LEFT SIDE
+========================= -->
+
+<section class="brand-side">
+
+
+    <div class="logo">
+
+
+        <div class="logo-mark">
+
+            $
+
+        </div>
+
+
+        <h1>
+
+            Treasurery
+
+        </h1>
+
+
+        <p>
+
+            Shared financial management for student
+            organizations and their officers.
+
+            Keep budgets, fundraisers, goals, and reports
+            organized in one place.
+
+        </p>
+
+
+    </div>
+
+
+    <div class="feature-list">
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ✓
+            </div>
+
+            Shared club financial workspaces
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                $
+            </div>
+
+            Budgets, fundraisers, and event goals
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔒
+            </div>
+
+            Officer-based access and permissions
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     RIGHT SIDE
+========================= -->
+
+<section class="account-side">
+
+
+    <div class="account-card">
+
+
+        <h2>
+
+            Welcome
+
+        </h2>
+
+
+        <p>
+
+            Log in to your Treasurery account
+            or create a new officer account.
+
+        </p>
+
+
+
+        <div class="tabs">
+
+
+            <button
+                id="loginTab"
+                class="tab active"
+                type="button"
+            >
+
+                Log In
+
+            </button>
+
+
+            <button
+                id="signupTab"
+                class="tab"
+                type="button"
+            >
+
+                Create Account
+
+            </button>
+
+
+        </div>
+
+
+
+        <div
+            id="errorBox"
+            class="error"
+        ></div>
+
+
+
+        <!-- LOGIN -->
+
+        <form
+            id="loginForm"
+            class="form active"
+        >
+
+
+            <div class="field">
+
+
+                <label for="loginEmail">
+
+                    Email
+
+                </label>
+
+
+                <input
+                    id="loginEmail"
+                    type="email"
+                    autocomplete="email"
+                    required
+                >
+
+
+            </div>
+
+
+
+            <div class="field">
+
+
+                <div class="password-row">
+
+
+                    <label for="loginPassword">
+
+                        Password
+
+                    </label>
+
+
+                    <button
+                        id="forgotBtn"
+                        class="forgot"
+                        type="button"
+                    >
+
+                        Forgot password?
+
+                    </button>
+
+
+                </div>
+
+
+                <input
+                    id="loginPassword"
+                    type="password"
+                    autocomplete="current-password"
+                    minlength="6"
+                    required
+                >
+
+
+            </div>
+
+
+
+            <button
+                class="primary"
+                type="submit"
+            >
+
+                Log In
+
+            </button>
+
+
+        </form>
+
+
+
+        <!-- SIGN UP -->
+
+        <form
+            id="signupForm"
+            class="form"
+        >
+
+
+            <div class="field">
+
+
+                <label for="signupName">
+
+                    Full Name
+
+                </label>
+
+
+                <input
+                    id="signupName"
+                    type="text"
+                    autocomplete="name"
+                    required
+                >
+
+
+            </div>
+
+
+
+            <div class="field">
+
+
+                <label for="signupEmail">
+
+                    Email
+
+                </label>
+
+
+                <input
+                    id="signupEmail"
+                    type="email"
+                    autocomplete="email"
+                    required
+                >
+
+
+            </div>
+
+
+
+            <div class="field">
+
+
+                <label for="signupPassword">
+
+                    Password
+
+                </label>
+
+
+                <input
+                    id="signupPassword"
+                    type="password"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
+
+
+            </div>
+
+
+
+            <div class="field">
+
+
+                <label for="signupConfirm">
+
+                    Confirm Password
+
+                </label>
+
+
+                <input
+                    id="signupConfirm"
+                    type="password"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
+
+
+            </div>
+
+
+
+            <button
+                class="primary"
+                type="submit"
+            >
+
+                Create Account
+
+            </button>
+
+
+        </form>
+
+
+
+        <div
+            id="notice"
+            class="notice"
+        ></div>
+
+
+
+        <div class="footer-note">
+
+            Treasurery is intended for authorized
+            student organization officers and sponsors.
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<script>
+
+const loginTab =
+    document.getElementById(
+        "loginTab"
+    );
+
+
+const signupTab =
+    document.getElementById(
+        "signupTab"
+    );
+
+
+const loginForm =
+    document.getElementById(
+        "loginForm"
+    );
+
+
+const signupForm =
+    document.getElementById(
+        "signupForm"
+    );
+
+
+const errorBox =
+    document.getElementById(
+        "errorBox"
+    );
+
+
+const notice =
+    document.getElementById(
+        "notice"
+    );
+
+
+
+function clearMessages(){
+
+    errorBox.classList.remove(
+        "show"
+    );
+
+    notice.classList.remove(
+        "show"
+    );
+
+}
+
+
+
+function showNotice(message){
+
+    clearMessages();
+
+    notice.textContent =
+        message;
+
+    notice.classList.add(
+        "show"
+    );
+
+}
+
+
+
+function showError(message){
+
+    clearMessages();
+
+    errorBox.textContent =
+        message;
+
+    errorBox.classList.add(
+        "show"
+    );
+
+}
+
+
+
+function showLogin(){
+
+    clearMessages();
+
+
+    loginTab.classList.add(
+        "active"
+    );
+
+
+    signupTab.classList.remove(
+        "active"
+    );
+
+
+    loginForm.classList.add(
+        "active"
+    );
+
+
+    signupForm.classList.remove(
+        "active"
+    );
+
+}
+
+
+
+function showSignup(){
+
+    clearMessages();
+
+
+    signupTab.classList.add(
+        "active"
+    );
+
+
+    loginTab.classList.remove(
+        "active"
+    );
+
+
+    signupForm.classList.add(
+        "active"
+    );
+
+
+    loginForm.classList.remove(
+        "active"
+    );
+
+}
+
+
+
+loginTab.addEventListener(
+    "click",
+    showLogin
+);
+
+
+signupTab.addEventListener(
+    "click",
+    showSignup
+);
+
+
+
+loginForm.addEventListener(
+
+    "submit",
+
+    event => {
+
+
+        event.preventDefault();
+
+
+        if(
+            !loginForm.checkValidity()
+        ){
+
+            loginForm.reportValidity();
+
+            return;
+
+        }
+
+
+        showNotice(
+
+            "Account login screen is working. We will connect this button to the shared Treasurery database in the backend step."
+
+        );
+
+    }
+
+);
+
+
+
+signupForm.addEventListener(
+
+    "submit",
+
+    event => {
+
+
+        event.preventDefault();
+
+
+        if(
+            !signupForm.checkValidity()
+        ){
+
+            signupForm.reportValidity();
+
+            return;
+
+        }
+
+
+        const password =
+            document.getElementById(
+                "signupPassword"
+            ).value;
+
+
+        const confirmPassword =
+            document.getElementById(
+                "signupConfirm"
+            ).value;
+
+
+        if(
+            password
+            !==
+            confirmPassword
+        ){
+
+            showError(
+                "The passwords do not match."
+            );
+
+            return;
+
+        }
+
+
+        showNotice(
+
+            "Create Account is working visually. Real account creation will be connected when we add the shared database."
+
+        );
+
+    }
+
+);
+
+
+
+document
+    .getElementById(
+        "forgotBtn"
+    )
+    .addEventListener(
+
+        "click",
+
+        () => {
+
+
+            showNotice(
+
+                "Password reset will become active when we connect the account system."
+
+            );
+
+        }
+
+    );
+
+</script>
+
+
+</body>
+
+</html>
