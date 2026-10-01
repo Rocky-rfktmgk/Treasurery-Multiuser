@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Your Clubs | Treasurery</title>
+
+<style>
+
+:root{
+  --blue:#2563eb;
+  --blue-dark:#1e40af;
+  --blue-soft:#eff6ff;
+
+  --green:#16a34a;
+  --green-soft:#ecfdf5;
+
+  --red:#dc2626;
+
+  --text:#172033;
+  --muted:#667085;
+
+  --border:#dfe5ee;
+  --background:#f5f8fc;
+  --card:#ffffff;
+
+  --shadow:
+    0 14px 35px
+    rgba(31,41,55,.08);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color:var(--text);
+
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(37,99,235,.10),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(22,163,74,.08),
+      transparent 30rem
+    ),
+    var(--background);
+}
+
+button,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:
+    16px
+    28px;
+
+  background:white;
+
+  border-bottom:
+    1px solid
+    var(--border);
+
+  position:sticky;
+
+  top:0;
+
+  z-index:10;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  font-weight:900;
+
+  color:var(--blue);
+
+  font-size:20px;
+}
+
+.brand-mark{
+  width:36px;
+  height:36px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:10px;
+
+  color:white;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--blue),
+      var(--green)
+    );
+
+  font-size:18px;
+}
+
+.account{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.avatar{
+  width:36px;
+  height:36px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:50%;
+
+  background:
+    var(--blue-soft);
+
+  color:
+    var(--blue);
+
+  font-weight:900;
+}
+
+.logout{
+  border:
+    1px solid
+    var(--border);
+
+  background:white;
+
+  padding:
+    9px
+    12px;
+
+  border-radius:
+    9px;
+
+  color:
+    var(--muted);
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+  width:
+    min(
+      1050px,
+      calc(100% - 36px)
+    );
+
+  margin:
+    0 auto;
+
+  padding:
+    48px
+    0
+    70px;
+}
+
+.hero{
+  display:flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    flex-end;
+
+  gap:20px;
+
+  margin-bottom:
+    30px;
+}
+
+.hero h1{
+  margin:
+    0
+    0
+    8px;
+
+  font-size:
+    clamp(
+      30px,
+      5vw,
+      44px
+    );
+
+  letter-spacing:
+    -1px;
+}
+
+.hero p{
+  margin:0;
+
+  color:
+    var(--muted);
+
+  font-size:
+    14px;
+
+  line-height:
+    1.6;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.primary-btn,
+.secondary-btn{
+  border:0;
+
+  padding:
+    11px
+    16px;
+
+  border-radius:
+    10px;
+
+  font-size:
+    12px;
+
+  font-weight:
+    900;
+}
+
+.primary-btn{
+  color:white;
+  background:var(--blue);
+}
+
+.primary-btn:hover{
+  background:var(--blue-dark);
+}
+
+.secondary-btn{
+  color:var(--blue);
+
+  background:white;
+
+  border:
+    1px solid
+    #bfdbfe;
+}
+
+/* =========================
+   CLUB GRID
+========================= */
+
+.section-title{
+  margin:
+    0
+    0
+    15px;
+
+  font-size:
+    17px;
+}
+
+.club-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(260px,1fr)
+    );
+
+  gap:
+    18px;
+}
+
+.club-card{
+  background:
+    var(--card);
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    18px;
+
+  padding:
+    22px;
+
+  box-shadow:
+    var(--shadow);
+
+  transition:
+    transform .2s,
+    box-shadow .2s;
+}
+
+.club-card:hover{
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 18px 40px
+    rgba(31,41,55,.11);
+}
+
+.club-icon{
+  width:44px;
+  height:44px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:
+    12px;
+
+  margin-bottom:
+    18px;
+
+  color:
+    var(--blue);
+
+  background:
+    var(--blue-soft);
+
+  font-weight:
+    900;
+}
+
+.club-card h2{
+  margin:
+    0
+    0
+    5px;
+
+  font-size:
+    19px;
+}
+
+.role{
+  display:inline-block;
+
+  margin-top:
+    6px;
+
+  padding:
+    6px
+    9px;
+
+  border-radius:
+    999px;
+
+  color:
+    #166534;
+
+  background:
+    var(--green-soft);
+
+  font-size:
+    10px;
+
+  font-weight:
+    900;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    .4px;
+}
+
+.club-info{
+  margin:
+    17px
+    0;
+
+  color:
+    var(--muted);
+
+  font-size:
+    12px;
+
+  line-height:
+    1.6;
+}
+
+.open-btn{
+  width:100%;
+
+  border:0;
+
+  padding:
+    11px;
+
+  border-radius:
+    10px;
+
+  color:white;
+
+  background:
+    var(--blue);
+
+  font-size:
+    12px;
+
+  font-weight:
+    900;
+}
+
+.open-btn:hover{
+  background:
+    var(--blue-dark);
+}
+
+/* =========================
+   EMPTY / INFO
+========================= */
+
+.info-box{
+  margin-top:
+    28px;
+
+  padding:
+    16px;
+
+  border-radius:
+    12px;
+
+  color:
+    #1e40af;
+
+  background:
+    var(--blue-soft);
+
+  border:
+    1px solid
+    #bfdbfe;
+
+  font-size:
+    12px;
+
+  line-height:
+    1.6;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  background:
+    rgba(15,23,42,.55);
+
+  z-index:
+    100;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:20px;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-card{
+  width:
+    min(
+      430px,
+      100%
+    );
+
+  background:white;
+
+  border-radius:
+    18px;
+
+  padding:
+    25px;
+
+  box-shadow:
+    0 25px 60px
+    rgba(0,0,0,.22);
+}
+
+.modal-card h2{
+  margin:
+    0
+    0
+    6px;
+
+  font-size:
+    22px;
+}
+
+.modal-card p{
+  margin:
+    0
+    0
+    20px;
+
+  color:
+    var(--muted);
+
+  font-size:
+    12px;
+
+  line-height:
+    1.5;
+}
+
+.field{
+  margin-bottom:
+    15px;
+}
+
+.field label{
+  display:block;
+
+  margin-bottom:
+    7px;
+
+  font-size:
+    11px;
+
+  font-weight:
+    900;
+}
+
+.field input,
+.field select{
+  width:100%;
+
+  padding:
+    11px
+    12px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:
+    9px;
+
+  outline:none;
+}
+
+.field input:focus,
+.field select:focus{
+  border-color:
+    var(--blue);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(37,99,235,.10);
+}
+
+.modal-actions{
+  display:flex;
+
+  justify-content:
+    flex-end;
+
+  gap:
+    9px;
+
+  margin-top:
+    20px;
+}
+
+.cancel-btn{
+  border:
+    1px solid
+    var(--border);
+
+  background:white;
+
+  color:
+    var(--muted);
+
+  padding:
+    10px
+    14px;
+
+  border-radius:
+    9px;
+
+  font-weight:
+    800;
+
+  font-size:
+    12px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+  .topbar{
+    padding:
+      14px
+      17px;
+  }
+
+  .account span{
+    display:none;
+  }
+
+  .container{
+    padding-top:
+      30px;
+  }
+
+  .hero{
+    align-items:
+      stretch;
+
+    flex-direction:
+      column;
+  }
+
+  .actions{
+    display:grid;
+
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+  .primary-btn,
+  .secondary-btn{
+    width:100%;
+  }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+  <div class="brand">
+
+    <div class="brand-mark">
+      $
+    </div>
+
+    Treasurery
+
+  </div>
+
+
+  <div class="account">
+
+    <span>
+      Officer Account
+    </span>
+
+    <div class="avatar">
+      P
+    </div>
+
+    <button
+      class="logout"
+      type="button"
+      onclick="goBackToLogin()"
+    >
+      Log Out
+    </button>
+
+  </div>
+
+</header>
+
+
+<main class="container">
+
+
+  <section class="hero">
+
+    <div>
+
+      <h1>
+        Your Clubs
+      </h1>
+
+      <p>
+        Choose an organization to open its financial workspace,
+        or create and join another club.
+      </p>
+
+    </div>
+
+
+    <div class="actions">
+
+      <button
+        class="secondary-btn"
+        type="button"
+        onclick="openJoinModal()"
+      >
+        Join Club
+      </button>
+
+      <button
+        class="primary-btn"
+        type="button"
+        onclick="openCreateModal()"
+      >
+        + Create Club
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <h2 class="section-title">
+    My Organizations
+  </h2>
+
+
+  <section
+    id="clubGrid"
+    class="club-grid"
+  >
+
+
+    <article class="club-card">
+
+      <div class="club-icon">
+        SC
+      </div>
+
+      <h2>
+        Senior Class
+      </h2>
+
+      <span class="role">
+        Treasurer
+      </span>
+
+      <div class="club-info">
+        Financial workspace for Senior Class.
+        Open the dashboard to view budgets,
+        fundraisers, goals, analytics, and reports.
+      </div>
+
+      <button
+        class="open-btn"
+        type="button"
+        onclick="openWorkspace('Senior Class')"
+      >
+        Open Workspace
+      </button>
+
+    </article>
+
+
+    <article class="club-card">
+
+      <div class="club-icon">
+        SGA
+      </div>
+
+      <h2>
+        Student Government
+      </h2>
+
+      <span class="role">
+        President
+      </span>
+
+      <div class="club-info">
+        Financial workspace for Student Government.
+        Your role will determine which financial
+        tools you can edit.
+      </div>
+
+      <button
+        class="open-btn"
+        type="button"
+        onclick="openWorkspace('Student Government')"
+      >
+        Open Workspace
+      </button>
+
+    </article>
+
+
+  </section>
+
+
+  <div class="info-box">
+
+    These clubs are sample data for now.
+
+    Once Supabase is connected, this page will
+    automatically show only the clubs that the
+    logged-in officer actually belongs to.
+
+  </div>
+
+
+</main>
+
+
+<!-- CREATE CLUB MODAL -->
+
+<div
+  id="createModal"
+  class="modal"
+>
+
+  <div class="modal-card">
+
+    <h2>
+      Create a Club
+    </h2>
+
+    <p>
+      Create a new financial workspace.
+      Real club creation will be connected to
+      Supabase later.
+    </p>
+
+
+    <div class="field">
+
+      <label for="clubName">
+        Club Name
+      </label>
+
+      <input
+        id="clubName"
+        type="text"
+        placeholder="Example: Law Club"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label for="creatorRole">
+        Your Officer Role
+      </label>
+
+      <select id="creatorRole">
+
+        <option>
+          President
+        </option>
+
+        <option>
+          Vice President
+        </option>
+
+        <option>
+          Treasurer
+        </option>
+
+        <option>
+          Secretary
+        </option>
+
+        <option>
+          Other Officer
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        class="cancel-btn"
+        type="button"
+        onclick="closeCreateModal()"
+      >
+        Cancel
+      </button>
+
+      <button
+        class="primary-btn"
+        type="button"
+        onclick="fakeCreateClub()"
+      >
+        Create Club
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- JOIN CLUB MODAL -->
+
+<div
+  id="joinModal"
+  class="modal"
+>
+
+  <div class="modal-card">
+
+    <h2>
+      Join a Club
+    </h2>
+
+    <p>
+      Enter an invite code provided by the
+      club owner or sponsor.
+    </p>
+
+
+    <div class="field">
+
+      <label for="inviteCode">
+        Invite Code
+      </label>
+
+      <input
+        id="inviteCode"
+        type="text"
+        placeholder="Example: SGA-4821"
+      >
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        class="cancel-btn"
+        type="button"
+        onclick="closeJoinModal()"
+      >
+        Cancel
+      </button>
+
+      <button
+        class="primary-btn"
+        type="button"
+        onclick="fakeJoinClub()"
+      >
+        Join Club
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+function openCreateModal(){
+
+  document
+    .getElementById("createModal")
+    .classList.add("show");
+
+}
+
+
+function closeCreateModal(){
+
+  document
+    .getElementById("createModal")
+    .classList.remove("show");
+
+}
+
+
+function openJoinModal(){
+
+  document
+    .getElementById("joinModal")
+    .classList.add("show");
+
+}
+
+
+function closeJoinModal(){
+
+  document
+    .getElementById("joinModal")
+    .classList.remove("show");
+
+}
+
+
+function fakeCreateClub(){
+
+  const clubName =
+    document
+      .getElementById("clubName")
+      .value
+      .trim();
+
+
+  const role =
+    document
+      .getElementById("creatorRole")
+      .value;
+
+
+  if(!clubName){
+
+    alert(
+      "Enter a club name first."
+    );
+
+    return;
+
+  }
+
+
+  addClubCard(
+    clubName,
+    role
+  );
+
+
+  document
+    .getElementById("clubName")
+    .value = "";
+
+
+  closeCreateModal();
+
+}
+
+
+function fakeJoinClub(){
+
+  const code =
+    document
+      .getElementById("inviteCode")
+      .value
+      .trim();
+
+
+  if(!code){
+
+    alert(
+      "Enter an invite code first."
+    );
+
+    return;
+
+  }
+
+
+  alert(
+    "Invite codes will become real when we connect Supabase."
+  );
+
+
+  closeJoinModal();
+
+}
+
+
+function addClubCard(
+  clubName,
+  role
+){
+
+  const grid =
+    document
+      .getElementById("clubGrid");
+
+
+  const initials =
+    clubName
+      .split(" ")
+      .map(word => word[0])
+      .join("")
+      .substring(0,3)
+      .toUpperCase();
+
+
+  const card =
+    document
+      .createElement("article");
+
+
+  card.className =
+    "club-card";
+
+
+  card.innerHTML = `
+
+    <div class="club-icon">
+      ${initials}
+    </div>
+
+    <h2>
+      ${clubName}
+    </h2>
+
+    <span class="role">
+      ${role}
+    </span>
+
+    <div class="club-info">
+
+      Financial workspace for ${clubName}.
+
+      This sample club only exists until
+      the page is refreshed.
+
+    </div>
+
+    <button
+      class="open-btn"
+      type="button"
+    >
+      Open Workspace
+    </button>
+
+  `;
+
+
+  const openButton =
+    card.querySelector(
+      ".open-btn"
+    );
+
+
+  openButton.addEventListener(
+    "click",
+    () => openWorkspace(clubName)
+  );
+
+
+  grid.appendChild(card);
+
+}
+
+
+function openWorkspace(
+  clubName
+){
+
+  alert(
+    clubName +
+    " is ready for Page 3. Next we will connect this button to the Treasurery finance workspace."
+  );
+
+}
+
+
+function goBackToLogin(){
+
+  window.location.href =
+    "index.html";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
